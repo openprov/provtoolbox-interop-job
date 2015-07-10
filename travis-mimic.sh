@@ -35,7 +35,7 @@ echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
 echo "PROVPY_SCRIPTS_DIR=$TRAVIS_BUILD_DIR/ProvPy/scripts" >> config.properties
 echo "PROVTOOLBOX_SCRIPTS_DIR=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin" >> config.properties
 echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
-cat localconfig.properties
+cat config.properties
 mkdir localconfig
 python prov_interop/customise-config.py config localconfig config.properties
 echo "Test configuration..."
