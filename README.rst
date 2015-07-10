@@ -3,8 +3,8 @@ Southampton Provenance Tool Suite ProvToolbox Interoperability Tests
 
 Interoperability test job for the `Southampton Provenance Suite <https://provenance.ecs.soton.ac.uk>`_ ProvToolbox tool.
 
-.. image:: https://travis-ci.org/mikej888/provtoolsuite-provpy-interop-job.svg
-  :target: https://travis-ci.org/mikej888/provtoolsuite-provpy-interop-job
+.. image:: https://travis-ci.org/mikej888/provtoolsuite-provtoolbox-interop-job.svg
+  :target: https://travis-ci.org/mikej888/provtoolsuite-provtoolbox-interop-job
   :alt: TravisCI Build Status
 
 This tests `ProvToolbox <
