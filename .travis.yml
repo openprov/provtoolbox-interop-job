@@ -12,38 +12,43 @@ before_install:
   - sudo apt-get -qq install rpm > /dev/null
   - sudo apt-get -y install libxml2-utils
   - sudo apt-get -y install graphviz
-  - echo "Getting ProvToolbox..."
-  - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
-  - cd ProvToolbox
-  - mvn clean install
-  - ./toolbox/target/appassembler/bin/provconvert -version
-  - cd ..
-  - echo "Installing ProvPy dependencies..."
-  - sudo apt-get -y install zlib1g-dev
-  - sudo apt-get -y install libxslt1-dev
-  - echo "Getting ProvPy package..."
-  - pip install prov
-  - prov-convert --version
-  - prov-compare --version
-  - echo "Getting test harness..."
-  - git clone https://github.com/mikej888/provtoolsuite-interop-test-harness test-harness
-  - cd test-harness
-  - pip install -r requirements.txt
-  - echo "Creating local configuration files..."
-  - echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
-  - echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
-  - echo "PROVTOOLBOX_SCRIPTS_DIR=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin" >> config.properties
-  - echo "PROVPY_CONVERT_EXE=prov-convert" >> config.properties
-# Since prov-convert is executable, blank out the script name argument
-  - echo "PROVPY_SCRIPTS_DIR/prov-convert,=" >> config.properties
-  - echo "PROVPY_COMPARE_EXE=prov-compare" >> config.properties
-# Since prov-convert is executable, blank out the script name argument
-  - echo "PROVPY_SCRIPTS_DIR/prov-compare,=" >> config.properties
-  - cat config.properties
-  - mkdir localconfig
-  - python prov_interop/customise-config.py config localconfig config.properties
-  - echo "Test configuration..."
-  - cat localconfig/*
+# Source ProvToolbox
+#  - echo "Getting ProvToolbox..."
+#  - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
+#  - cd ProvToolbox
+#  - mvn clean install
+#  - ./toolbox/target/appassembler/bin/provconvert -version
+#  - cd ..
+# Binary ProvToolbox
+   - rpm -U https://repo1.maven.org/maven2/org/openprovenance/prov/toolbox/0.6.2/toolbox-0.6.2-rpm.rpm
+   - provconvert -version
 
-script: 
-  - nosetests -v prov_interop.interop_tests.test_provtoolbox
+#  - echo "Installing ProvPy dependencies..."
+#  - sudo apt-get -y install zlib1g-dev
+#  - sudo apt-get -y install libxslt1-dev
+#  - echo "Getting ProvPy package..."
+#  - pip install prov
+#  - prov-convert --version
+#  - prov-compare --version
+#  - echo "Getting test harness..."
+#  - git clone https://github.com/mikej888/provtoolsuite-interop-test-harness test-harness
+#  - cd test-harness
+#  - pip install -r requirements.txt
+#  - echo "Creating local configuration files..."
+#  - echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
+#  - echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
+#  - echo "PROVTOOLBOX_SCRIPTS_DIR=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin" >> config.properties
+#  - echo "PROVPY_CONVERT_EXE=prov-convert" >> config.properties
+# Since prov-convert is executable, blank out the script name argument
+#  - echo "PROVPY_SCRIPTS_DIR/prov-convert,=" >> config.properties
+#  - echo "PROVPY_COMPARE_EXE=prov-compare" >> config.properties
+# Since prov-convert is executable, blank out the script name argument
+#  - echo "PROVPY_SCRIPTS_DIR/prov-compare,=" >> config.properties
+#  - cat config.properties
+#  - mkdir localconfig
+#  - python prov_interop/customise-config.py config localconfig config.properties
+#  - echo "Test configuration..."
+#  - cat localconfig/*
+
+#script: 
+#  - nosetests -v prov_interop.interop_tests.test_provtoolbox
