@@ -42,7 +42,7 @@ before_install:
   - echo "Creating local configuration files..."
   - echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
   - echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
-  - echo "PROVTOOLBOX_SCRIPTS_DIR=$PROV_TOOLBOX_BIN" >> config.properties
+  - echo "PROVTOOLBOX_SCRIPTS_DIR=$PROVTOOLBOX_BIN" >> config.properties
   - echo "PROVPY_CONVERT_EXE=prov-convert" >> config.properties
 # Since prov-convert is executable, blank out the script name argument
   - echo "PROVPY_SCRIPTS_DIR/prov-convert,=" >> config.properties
