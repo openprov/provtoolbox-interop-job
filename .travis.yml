@@ -13,21 +13,20 @@ before_install:
   - sudo apt-get -y install libxml2-utils
   - sudo apt-get -y install graphviz
 # Source ProvToolbox
-#  - echo "Getting ProvToolbox..."
-#  - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
-#  - cd ProvToolbox
-#  - mvn clean install
-#  - ./toolbox/target/appassembler/bin/provconvert -version
-#  - cd ..
-#  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin/
-# Binary ProvToolbox via ZIP
-  - curl -L -O http://search.maven.org/remotecontent?filepath=org/openprovenance/prov/toolbox/0.6.2/toolbox-0.6.2-release.zip
-  - unzip toolbox-0.6.2-release.zip
+  - echo "Getting ProvToolbox..."
+  - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
-  - ./bin/provconvert -version
+  - mvn clean install
+  - ./toolbox/target/appassembler/bin/provconvert -version
   - cd ..
-  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/bin/
-
+  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin/
+# Binary ProvToolbox via ZIP
+#  - curl -L -O http://search.maven.org/remotecontent?filepath=org/openprovenance/prov/toolbox/0.6.2/toolbox-0.6.2-release.zip
+#  - unzip toolbox-0.6.2-release.zip
+#  - cd ProvToolbox
+#  - ./bin/provconvert -version
+#  - cd ..
+#  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/bin/
   - echo "Installing ProvPy dependencies..."
   - sudo apt-get -y install zlib1g-dev
   - sudo apt-get -y install libxslt1-dev
