@@ -4,6 +4,7 @@ python:
   - 2.7
 
 before_install:
+  - BASE=`pwd`
   - echo "Getting test cases..."
   - git clone https://github.com/mikej888/provtoolsuite-testcases testcases
   - echo "Installing ProvToolbox dependencies..."
@@ -32,10 +33,10 @@ before_install:
   - cd test-harness
   - pip install -r requirements.txt
   - echo "Creating local configuration files..."
-  - echo "PROV_TEST_CASES_DIR=`pwd`/testcases" > config.properties
-  - echo "PROVPY_SCRIPTS_DIR=`pwd`/ProvPy/scripts" >> config.properties
-  - echo "PROVTOOLBOX_SCRIPTS_DIR=`pwd`/ProvToolbox/toolbox/target/appassembler/bin" >> config.properties
-  - echo "PROV_LOCAL_CONFIG_DIR=`pwd`/test-harness/localconfig" >> config.properties
+  - echo "PROV_TEST_CASES_DIR=$BASE/testcases" > config.properties
+  - echo "PROVPY_SCRIPTS_DIR=$BASE/ProvPy/scripts" >> config.properties
+  - echo "PROVTOOLBOX_SCRIPTS_DIR=$BASE/ProvToolbox/toolbox/target/appassembler/bin" >> config.properties
+  - echo "PROV_LOCAL_CONFIG_DIR=$BASE/test-harness/localconfig" >> config.properties
   - mkdir localconfig
   - python prov_interop/customise-config.py config localconfig config.properties
   - echo "Test configuration..."
