@@ -20,7 +20,7 @@ before_install:
 #  - ./toolbox/target/appassembler/bin/provconvert -version
 #  - cd ..
 # Binary ProvToolbox
-  - rpm -U https://repo1.maven.org/maven2/org/openprovenance/prov/toolbox/0.6.2/toolbox-0.6.2-rpm.rpm
+  - sudo alien rpm https://repo1.maven.org/maven2/org/openprovenance/prov/toolbox/0.6.2/toolbox-0.6.2-rpm.rpm
   - provconvert -version
 #  - echo "Installing ProvPy dependencies..."
 #  - sudo apt-get -y install zlib1g-dev
