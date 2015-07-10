@@ -7,8 +7,6 @@ Interoperability test job for the `Southampton Provenance Suite <https://provena
   :target: https://travis-ci.org/mikej888/provtoolsuite-provtoolbox-interop-job
   :alt: TravisCI Build Status
 
-This tests `ProvToolbox <
-
 This tests `ProvToolbox <https://github.com/lucmoreau/ProvToolbox>`_ upon canonical `test cases <https://github.com/mikej888/provtoolsuite-testcases>`_ using an `interoperability test harness <https://github.com/mikej888/provtoolsuite-inter
 op-test-harness>`_.
 
