@@ -20,7 +20,7 @@ python:
 
 before_install:
   - echo "Getting test cases..."
-  - git clone https://github.com/mikej888/provtoolsuite-testcases testcases
+  - git clone https://github.com/prov-suite/testcases testcases
   - echo "Installing ProvToolbox dependencies..."
   - sudo apt-get -qq update > /dev/null
   - sudo apt-get -qq install graphviz > /dev/null
@@ -50,7 +50,7 @@ before_install:
   - prov-convert --version
   - prov-compare --version
   - echo "Getting test harness..."
-  - git clone https://github.com/mikej888/provtoolsuite-interop-test-harness test-harness
+  - git clone https://github.com/prov-suite/interop-test-harness test-harness
   - cd test-harness
   - pip install -r requirements.txt
   - echo "Creating local configuration files..."
