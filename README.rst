@@ -9,10 +9,10 @@ Southampton Provenance Tool Suite ProvToolbox Interoperability Tests
 
 The test job:
 
-* Gets ProvToolbox
-* Gets ProvPy
-* Gets canonical `test cases <https://github.com/mikej888/provtoolsuite-testcases>`_
-* Gets `interoperability test harness <https://github.com/mikej888/provtoolsuite-interop-test-harness>`_.
+* Gets ProvToolbox from GitHub (stable master branch).
+* Gets ProvPy via 'pip' (most recent release).
+* Gets canonical `test cases <https://github.com/mikej888/provtoolsuite-testcases>`_ from GitHub (stable master branch).
+* Gets `interoperability test harness <https://github.com/mikej888/provtoolsuite-interop-test-harness>`_ from GitHub (stable master branch).
 * Configures interoperability test harness.
 * Runs interoperability tests to validate ProvToolbox conversions done using provconvert. Conversions are validated using ProvPy's prov-compare script.
 
