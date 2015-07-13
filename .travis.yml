@@ -1,3 +1,18 @@
+# ProvToolbox interoperability tests
+#
+# This job assumes the following packages have been installed (these
+# are provided by the Travis CI build environment,
+# http://docs.travis-ci.com/user/ci-environment):
+#
+# git
+# curl
+# Python 2 and 3
+## ProvToolbox and ProvPy prerequisites
+# graphviz 
+## ProvToolbox prerequisites
+# openjdk-7-jdk
+# maven
+
 language: python
 
 python:
