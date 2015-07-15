@@ -18,15 +18,18 @@ language: python
 python:
   - 2.7
 
+addons:
+  apt:
+    packages:
+    - graphviz
+    - rpm
+    - libxml2-utils
+    - zlib1g-dev
+    - libxslt1-dev
+
 before_install:
   - echo "Getting test cases..."
   - git clone https://github.com/mikej888/provtoolsuite-testcases testcases
-  - echo "Installing ProvToolbox dependencies..."
-  - sudo apt-get -qq update > /dev/null
-  - sudo apt-get -qq install graphviz > /dev/null
-  - sudo apt-get -qq install rpm > /dev/null
-  - sudo apt-get -y install libxml2-utils
-  - sudo apt-get -y install graphviz
 # Source ProvToolbox
   - echo "Getting ProvToolbox..."
   - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
@@ -42,9 +45,6 @@ before_install:
 #  - ./bin/provconvert -version
 #  - cd ..
 #  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/bin/
-  - echo "Installing ProvPy dependencies..."
-  - sudo apt-get -y install zlib1g-dev
-  - sudo apt-get -y install libxslt1-dev
   - echo "Getting ProvPy package..."
   - pip install prov
   - prov-convert --version
