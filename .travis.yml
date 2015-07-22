@@ -29,7 +29,7 @@ addons:
 
 before_install:
   - echo "Getting test cases..."
-  - git clone https://github.com/mikej888/provtoolsuite-testcases testcases
+  - git clone https://github.com/prov-suite/testcases testcases
 # Source ProvToolbox
   - echo "Getting ProvToolbox..."
   - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
@@ -50,7 +50,7 @@ before_install:
   - prov-convert --version
   - prov-compare --version
   - echo "Getting test harness..."
-  - git clone https://github.com/mikej888/provtoolsuite-interop-test-harness test-harness
+  - git clone https://github.com/prov-suite/interop-test-harness test-harness
   - cd test-harness
   - pip install -r requirements.txt
   - echo "Creating local configuration files..."

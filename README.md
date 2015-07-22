@@ -2,7 +2,7 @@
 
 [ProvToolbox](https://github.com/lucmoreau/ProvToolbox) interoperability test job.
 
-[![Build Status](https://travis-ci.org/mikej888/provtoolsuite-provtoolbox-interop-job.svg)](https://travis-ci.org/mikej888/provtoolsuite-provtoolbox-interop-job)
+[![Build Status](https://travis-ci.org/prov-suite/provtoolbox-interop-job.svg)](https://travis-ci.org/prov-suite/provtoolbox-interop-job)
 
 The Travis CI test job:
 
