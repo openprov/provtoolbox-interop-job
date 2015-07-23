@@ -2,16 +2,14 @@
 #
 # This job assumes the following packages have been installed (these
 # are provided by the Travis CI build environment,
-# http://docs.travis-ci.com/user/ci-environment):
+# http://docs.travis-ci.com/user/ci-environment:
 #
 # git
 # curl
-# Python 2 and 3
-## ProvToolbox and ProvPy prerequisites
+# python 2.7
 # graphviz 
-## ProvToolbox prerequisites
-# openjdk-7-jdk
 # maven
+# openjdk-7-jdk
 
 language: python
 
@@ -30,43 +28,24 @@ addons:
 before_install:
   - echo "Getting test cases..."
   - git clone https://github.com/prov-suite/testcases testcases
-# Source ProvToolbox
-  - echo "Getting ProvToolbox..."
+  - echo "Getting ProvPy package for use as a comparator..."
+  - pip install prov
+  - prov-compare --version
+  - echo "Getting ProvToolbox source..."
   - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
   - mvn clean install
   - ./toolbox/target/appassembler/bin/provconvert -version
+  - PROVTOOLBOX_CONVERT=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin/provconvert
   - cd ..
-  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin/
-# Binary ProvToolbox via ZIP
-#  - curl -L -O http://search.maven.org/remotecontent?filepath=org/openprovenance/prov/toolbox/0.6.2/toolbox-0.6.2-release.zip
-#  - unzip toolbox-0.6.2-release.zip
-#  - cd ProvToolbox
-#  - ./bin/provconvert -version
-#  - cd ..
-#  - PROVTOOLBOX_BIN=$TRAVIS_BUILD_DIR/ProvToolbox/bin/
-  - echo "Getting ProvPy package..."
-  - pip install prov
-  - prov-convert --version
-  - prov-compare --version
   - echo "Getting test harness..."
   - git clone https://github.com/prov-suite/interop-test-harness test-harness
   - cd test-harness
   - pip install -r requirements.txt
-  - echo "Creating local configuration files..."
-  - echo "PROV_TEST_CASES_DIR=$TRAVIS_BUILD_DIR/testcases" > config.properties
-  - echo "PROV_LOCAL_CONFIG_DIR=$TRAVIS_BUILD_DIR/test-harness/localconfig" >> config.properties
-  - echo "PROVTOOLBOX_SCRIPTS_DIR=$PROVTOOLBOX_BIN" >> config.properties
-  - echo "PROVPY_CONVERT_EXE=prov-convert" >> config.properties
-# Since prov-convert is executable, blank out the script name argument
-  - echo "PROVPY_SCRIPTS_DIR/prov-convert,=" >> config.properties
-  - echo "PROVPY_COMPARE_EXE=prov-compare" >> config.properties
-# Since prov-convert is executable, blank out the script name argument
-  - echo "PROVPY_SCRIPTS_DIR/prov-compare,=" >> config.properties
-  - cat config.properties
-  - mkdir localconfig
-  - python prov_interop/customise-config.py config localconfig config.properties
-  - echo "Test configuration..."
+  - echo "Creating local configuration ..."
+  - cp -r config localconfig
+  - python prov_interop/set-yaml-value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
+  - python prov_interop/set-yaml-value.py localconfig/provtoolbox.yaml ProvToolbox.executable="$PROVTOOLBOX_CONVERT"
   - cat localconfig/*
 
 script: 
