@@ -32,9 +32,9 @@ before_install:
   - pip install prov
   - prov-compare --version
   - echo "Getting ProvToolbox source..."
-  - git clone https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
+  - git clone -b ProvToolbox-0.7.1 https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
-  - mvn clean install
+  - mvn clean install -DskipTests
   - ./toolbox/target/appassembler/bin/provconvert -version
   - PROVTOOLBOX_CONVERT=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin/provconvert
   - cd ..
