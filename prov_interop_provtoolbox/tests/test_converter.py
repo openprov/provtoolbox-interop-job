@@ -1,7 +1,7 @@
-"""Unit tests for :mod:`prov_interop.provtoolbox.converter`.
+"""Unit tests for :mod:`prov_interop_provtoolbox.converter`.
 
 These tests rely on the
-:mod:`prov_interop.tests.provtoolbox.provconvert_dummy.py` script,
+:mod:`prov_interop_provtoolbox.tests.provconvert_dummy.py` script,
 (that mimics ProvToolbox's ``provconvert`` executable 
 in terms of parameters and return codes) being available 
 in the same directory as this module.
@@ -39,7 +39,7 @@ import unittest
 from prov_interop import standards
 from prov_interop.component import ConfigError
 from prov_interop.converter import ConversionError
-from prov_interop.provtoolbox.converter import ProvToolboxConverter
+from prov_interop_provtoolbox.converter import ProvToolboxConverter
 
 class ProvToolboxConverterTestCase(unittest.TestCase):
 
