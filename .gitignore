@@ -1,0 +1,14 @@
+## Python
+
+*.py[cod]
+.python-version
+nosetests.xml
+apidocs/_build
+
+## Emacs
+
+*~
+
+## Mac
+
+.DS_Store
