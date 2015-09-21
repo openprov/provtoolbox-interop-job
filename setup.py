@@ -24,6 +24,7 @@ setup(
     package_dir={
         'prov_interop_provtoolbox': 'prov_interop_provtoolbox'
     },
+    data_files=[('prov_interop_provtoolbox/interop_tests', ['prov_interop_provtoolbox/interop_tests/provtoolbox.yaml'])],
     include_package_data=True,
     install_requires=requirements,
     license="Apache Software License",
