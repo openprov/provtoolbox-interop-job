@@ -38,7 +38,7 @@ class ProvToolboxTestCase(ConverterTestCase):
   """Interoperability tests for ProvToolbox ``provconvert``.
  
   Its configuration, loaded via
-  :meth:`prov_interop.interop_tests.test_converter.ConverterTestCase.configure`,
+  :meth:`prov_interop.interop_tests.test_converter.ConverterTestCase.get_configuration`,
   is expected to be in a YAML file: 
   
   - Either provided as the value of a ``ProvToolbox`` key in the
@@ -76,13 +76,14 @@ class ProvToolboxTestCase(ConverterTestCase):
   def setUp(self):
     super(ProvToolboxTestCase, self).setUp()
     self.converter = ProvToolboxConverter()
-    default_config_file = os.path.join(
+    config_file = os.path.join(
       os.path.dirname(os.path.abspath(inspect.getfile(
         inspect.currentframe()))), ProvToolboxTestCase.DEFAULT_CONFIGURATION_FILE)
-    super(ProvToolboxTestCase, self).configure(
+    config = super(ProvToolboxTestCase, self).get_configuration(
       ProvToolboxTestCase.CONFIGURATION_KEY,
       ProvToolboxTestCase.CONFIGURATION_FILE_ENV,
-      default_config_file)
+      config_file)
+    self.converter.configure(config)
 
   def tearDown(self):
     super(ProvToolboxTestCase, self).tearDown()
