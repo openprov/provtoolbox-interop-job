@@ -25,6 +25,9 @@
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
+import inspect
+import os
+
 from nose.tools import istest
 
 from prov_interop.interop_tests.test_converter import ConverterTestCase
@@ -42,7 +45,7 @@ class ProvToolboxTestCase(ConverterTestCase):
     :class:`prov_interop.harness.HarnessResource` configuration. 
   - Or, named in an environment variable, 
     ``PROVTOOLBOX_TEST_CONFIGURATION``.
-  - Or in ``localconfig/provtoolbox.yaml``.
+  - Or, ``provtoolbox.yaml``, co-located with this Python file.
 
   The configuration itself, within this file, is expected to have the
   key `ProvToolbox``. 
@@ -62,7 +65,7 @@ class ProvToolboxTestCase(ConverterTestCase):
   """str or unicode: environment variable holding configuration file name
   """
 
-  DEFAULT_CONFIGURATION_FILE="localconfig/provtoolbox.yaml"
+  DEFAULT_CONFIGURATION_FILE="provtoolbox.yaml"
   """str or unicode: default configuration file name
   """
 
@@ -73,10 +76,13 @@ class ProvToolboxTestCase(ConverterTestCase):
   def setUp(self):
     super(ProvToolboxTestCase, self).setUp()
     self.converter = ProvToolboxConverter()
+    default_config_file = os.path.join(
+      os.path.dirname(os.path.abspath(inspect.getfile(
+        inspect.currentframe()))), ProvToolboxTestCase.DEFAULT_CONFIGURATION_FILE)
     super(ProvToolboxTestCase, self).configure(
       ProvToolboxTestCase.CONFIGURATION_KEY,
       ProvToolboxTestCase.CONFIGURATION_FILE_ENV,
-      ProvToolboxTestCase.DEFAULT_CONFIGURATION_FILE)
+      default_config_file)
 
   def tearDown(self):
     super(ProvToolboxTestCase, self).tearDown()
