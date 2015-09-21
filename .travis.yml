@@ -26,27 +26,21 @@ addons:
     - libxslt1-dev
 
 before_install:
+  - echo "Getting test harness..."
+  - git clone https://github.com/mikej888/interop-test-harness
+  - cd interop-test-harness
+  - git checkout package
+  - python setup.py install
+  - cd ..
   - echo "Getting test cases..."
-  - git clone https://github.com/prov-suite/testcases testcases
-  - echo "Getting ProvPy package for use as a comparator..."
-  - pip install prov
-  - prov-compare --version
-  - echo "Getting ProvToolbox source..."
+  - git clone https://github.com/prov-suite/testcases
+  - echo "Getting ProvPy source..."
   - git clone -b development https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
   - mvn clean install -DskipTests
-  - ./toolbox/target/appassembler/bin/provconvert -version
-  - PROVTOOLBOX_CONVERT=$TRAVIS_BUILD_DIR/ProvToolbox/toolbox/target/appassembler/bin/provconvert
+  - export PATH=$PATH:PWD/toolbox/target/appassembler/bin
+  - provconvert -version
   - cd ..
-  - echo "Getting test harness..."
-  - git clone https://github.com/prov-suite/interop-test-harness test-harness
-  - cd test-harness
-  - pip install -r requirements.txt
-  - echo "Creating local configuration ..."
-  - cp -r config localconfig
-  - python prov_interop/set_yaml_value.py localconfig/harness.yaml test-cases="$TRAVIS_BUILD_DIR/testcases"
-  - python prov_interop/set_yaml_value.py localconfig/provtoolbox.yaml ProvToolbox.executable="$PROVTOOLBOX_CONVERT"
-  - cat localconfig/*
 
 script: 
-  - nosetests -v prov_interop.interop_tests.test_provtoolbox
+  - nosetests prov_interop.interop_tests.test_provtoolbox > log.txt
