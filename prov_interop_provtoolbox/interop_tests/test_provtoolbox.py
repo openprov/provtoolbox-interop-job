@@ -83,7 +83,7 @@ class ProvToolboxTestCase(ConverterTestCase):
       ProvToolboxTestCase.CONFIGURATION_KEY,
       ProvToolboxTestCase.CONFIGURATION_FILE_ENV,
       config_file)
-    self.converter.configure(config)
+    super(ProvToolboxTestCase, self).configure(config)
 
   def tearDown(self):
     super(ProvToolboxTestCase, self).tearDown()
