@@ -24,6 +24,7 @@ addons:
     - libxml2-utils
     - zlib1g-dev
     - libxslt1-dev
+    - genisoimage
 
 before_install:
   - echo "Getting test harness..."
