@@ -41,7 +41,7 @@ before_install:
   - git clone -b development https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
   - mvn clean install -DskipTests
-  - export PATH=$PATH:PWD/toolbox/target/appassembler/bin
+  - export PATH=$PATH:$PWD/toolbox/target/appassembler/bin
   - provconvert -version
   - cd ..
 
