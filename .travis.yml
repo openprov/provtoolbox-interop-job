@@ -36,6 +36,8 @@ before_install:
   - echo "Getting test cases..."
   - git clone https://github.com/prov-suite/testcases
   - echo "Getting ProvToolbox source..."
+  - sudo apt-get -qq update > /dev/null
+  - sudo apt-get --qq installgenisoimage
   - git clone -b development https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
   - mvn clean install -DskipTests
