@@ -34,7 +34,7 @@ before_install:
   - cd ..
   - echo "Getting test cases..."
   - git clone https://github.com/prov-suite/testcases
-  - echo "Getting ProvPy source..."
+  - echo "Getting ProvToolbox source..."
   - git clone -b development https://github.com/lucmoreau/ProvToolbox.git ProvToolbox
   - cd ProvToolbox
   - mvn clean install -DskipTests
