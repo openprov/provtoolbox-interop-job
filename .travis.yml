@@ -46,4 +46,4 @@ before_install:
   - cd ..
 
 script: 
-  - nosetests prov_interop.interop_tests.test_provtoolbox > log.txt
+  - nosetests prov_interop_provtoolbox.interop_tests.test_provtoolbox > log.txt
