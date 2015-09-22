@@ -33,7 +33,7 @@ addons:
 
 before_install:
   - echo "Getting test harness..."
-  - git clone https://github.com/mikej888/interop-test-harness
+  - git clone https://github.com/prov-suite/interop-test-harness
   - cd interop-test-harness
   - git checkout package
   - pip install -r requirements.txt
