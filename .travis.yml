@@ -36,6 +36,7 @@ before_install:
   - git clone https://github.com/mikej888/interop-test-harness
   - cd interop-test-harness
   - git checkout package
+  - pip install -r requirements
   - python setup.py install
   - cd ..
   - echo "Getting test cases..."
@@ -51,7 +52,7 @@ before_install:
   - cd ..
 
 install:
-  - python setup.py install
+  - pip install -r requirements
   
 script: 
   - nosetests $TEST_RUN
