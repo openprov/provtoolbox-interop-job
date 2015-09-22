@@ -38,7 +38,7 @@ $ source ubuntu-dependencies.sh
 Install package
 
 ```
-$ pip install -r requirements
+$ pip install -r requirements.txt
 $ python setup.py install
 ```
 
