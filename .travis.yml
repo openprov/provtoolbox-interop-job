@@ -16,6 +16,11 @@ language: python
 python:
   - 2.7
 
+env:
+  matrix:
+    - TEST_RUN="-v prov_interop_provtoolbox/tests"
+    - TEST_RUN="prov_interop_provtoolbox/interop_tests > log.txt"
+
 addons:
   apt:
     packages:
@@ -45,5 +50,8 @@ before_install:
   - provconvert -version
   - cd ..
 
+install:
+  - python setup.py install
+  
 script: 
-  - nosetests prov_interop_provtoolbox.interop_tests.test_provtoolbox > log.txt
+  - nosetests $TEST_RUN
